@@ -6,7 +6,7 @@ Esta é uma tela em LWC (Lightning Web Component) desenvolvida para exibir os re
 O objeto FAQ__c possui dois campos principais:
 
 - Question__c: campo de texto que armazena a pergunta.
-- Answer__c: campo de texto rico que armazena a resposta.
+- Answer__c: campo de Rich Text que armazena a resposta.
 
 ## Tecnologias utilizadas
 
