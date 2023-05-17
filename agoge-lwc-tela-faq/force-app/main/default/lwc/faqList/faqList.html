@@ -1,0 +1,54 @@
+<template>
+    <div class="container">
+        <h1 class="component-title">
+            FAQ
+        </h1>
+        <div class="search-container">
+            <lightning-input 
+                type="search" 
+                label="Pesquisa" 
+                onchange={handleSearch}>
+            </lightning-input>
+        </div>
+        <div class="faq-container">
+            <template if:true={faqs.length}>
+                <lightning-accordion>
+                    <template for:each={paginatedFaqs} for:item="faq">
+                        <lightning-accordion-section 
+                            key={faq.Id} 
+                            label={faq.Question__c} 
+                            class="faq-item">
+                            <div class="faq-answer">
+                                <lightning-formatted-rich-text value={faq.Answer__c}></lightning-formatted-rich-text>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                </lightning-accordion>
+                <div class="pagination-container">
+                    <lightning-button-icon
+                        icon-name="utility:chevronleft"
+                        variant="brand"
+                        disabled={isFirstPage}
+                        onclick={handlePreviousPage}>
+                    </lightning-button-icon>
+                    <span>
+                        {currentPage} of {totalPages}
+                    </span>
+                    <lightning-button-icon
+                        icon-name="utility:chevronright"
+                        variant="brand"
+                        disabled={isLastPage}
+                        onclick={handleNextPage}>
+                    </lightning-button-icon>
+                </div>
+            </template>
+            <template if:false={faqs.length}>
+                <p class="message">
+                    <strong>Nenhuma resgistro correspondente encontrado.</strong>
+                </p>
+            </template>
+        </div>
+    </div>
+</template>
+  
+
