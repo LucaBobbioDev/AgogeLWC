@@ -10,5 +10,11 @@ O objeto FAQ__c possui dois campos principais:
 
 ## Tecnologias utilizadas
 
-- Salesforce Lightning Web Components (LWC)
-- Apex (para a consulta do objeto FAQ__c)
+- Front-End:Salesforce Lightning Web Components (HTML, CSS e JavaScript)
+- Back-End:Apex (Consulta do objeto FAQ__c)
+
+## Funcionalidades
+- Filtro de perguntas: O usuário poderá digitar um termo para filtrar as perguntas existentes no Salesforce.
+- Paginação de Registros: Serão exibidos até 10 registros por vez, com controles para navegar entre as páginas
+
+
