@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h1 class="component-title">
-            FAQ
+            Perguntas Frequentes
         </h1>
         <div class="search-container">
             <lightning-input 
@@ -13,7 +13,7 @@
         <div class="faq-container">
             <template if:true={faqs.length}>
                 <lightning-accordion>
-                    <template for:each={paginatedFaqs} for:item="faq">
+                    <template for:each={faqs} for:item="faq">
                         <lightning-accordion-section 
                             key={faq.Id} 
                             label={faq.Question__c} 
@@ -32,7 +32,7 @@
                         onclick={handlePreviousPage}>
                     </lightning-button-icon>
                     <span>
-                        {currentPage} of {totalPages}
+                        {currentPage} de {totalPages}
                     </span>
                     <lightning-button-icon
                         icon-name="utility:chevronright"
@@ -44,11 +44,9 @@
             </template>
             <template if:false={faqs.length}>
                 <p class="message">
-                    <strong>Nenhuma resgistro correspondente encontrado.</strong>
+                    <strong>Nenhum resgistro correspondente encontrado.</strong>
                 </p>
             </template>
         </div>
     </div>
 </template>
-  
-
