@@ -7,20 +7,17 @@ export default class FaqList extends LightningElement {
   searchTerm = '';
   faqs = [];
   currentPage = 1;
+  totalPages = 0;
   searchTimeout;
 
-  @wire(searchFaqs, { searchTerm: '$searchTerm' })
+  @wire(searchFaqs, { searchTerm: '$searchTerm', pageNumber: '$currentPage'})
   wiredFaqs({ error, data }) {
     if (data) {
-      this.faqs = data;
-      this.currentPage = 1;
+      this.faqs = data.faqs;
+      this.totalPages = Math.ceil(data.totalCount / PAGE_SIZE);
     } else if (error) {
       console.error(error);
     }
-  }
-
-  get totalPages() {
-    return Math.ceil(this.faqs.length / PAGE_SIZE);
   }
 
   get isFirstPage() {
@@ -31,13 +28,6 @@ export default class FaqList extends LightningElement {
     return this.currentPage === this.totalPages;
   }
 
-  get paginatedFaqs() {
-    const startIndex = (this.currentPage - 1) * PAGE_SIZE;
-    const endIndex = startIndex + PAGE_SIZE;
-
-    return this.faqs.slice(startIndex, endIndex);
-  }
-  
   handlePreviousPage() {
     this.currentPage = !this.isFirstPage ? this.currentPage - 1 : this.currentPage;
   }
